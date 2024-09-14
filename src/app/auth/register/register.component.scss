@@ -1,0 +1,135 @@
+/* Réinitialisation des marges et des espacements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style pour le conteneur principal */
+.containe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f3f5;
+    flex-direction: column;
+}
+
+/* Style pour le formulaire */
+.formulaire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Style pour le bloc du formulaire */
+.form {
+    background-color: #ffffff;
+    padding: 40px 60px;
+    border-radius: 10px;
+    min-width: 550px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le titre du formulaire */
+.form h1 {
+    color: #192634;
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Style pour les champs d'entrée */
+.form input {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+/* Style pour le bouton de soumission */
+.form .button {
+    padding: 12px 24px;
+    font-size: 15px;
+    color: #FFFFFF;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+/* Effet au survol du bouton */
+.form .button:hover {
+    background-color: #0056b3;
+}
+
+/* Style pour le lien */
+.form p {
+    margin-top: 20px;
+}
+
+.form a {
+    text-decoration: none;
+    color: rgba(229, 27, 27, 0.89);
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+/* Effet au survol du lien */
+.form a:hover {
+    color: #000;
+}
+
+/* Style pour le logo */
+.logo {
+    width: 80px;
+    height: auto;
+    margin: 8px auto;
+}
+
+/* Style pour les messages d'erreur */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* Style pour les messages d'erreur de validation du formulaire */
+.error-messages {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Style pour les champs d'entrée invalides */
+.invalid {
+    border-color: red;
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.1);
+    transition: border-color 0.3s;
+    outline: none;
+    outline-color: red;
+    outline-offset: 2px;
+    outline-style: dotted;
+}

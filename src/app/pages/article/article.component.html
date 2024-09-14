@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="container">
+  <div *ngIf="articles.length === 0" class="no-articles">
+    <p>Aucun article trouvé.</p>
+  </div>
+
+  <div class="card-container" *ngFor="let item of articles">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+          <!-- Optionnellement ajouter une image d'avatar ici -->
+        </div>
+        <mat-card-title>{{ item.titre }}</mat-card-title>
+        <mat-card-subtitle>
+          Posté par: {{ item.user.nomComplete }} | Posté le: {{ item.dateCreation | date:'medium' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="item.img" alt="image de l'article" class="post-img" />
+
+      <mat-card-content>
+        {{ (item.contenu && item.contenu.length > 600 ? (item.contenu | slice:0:600) + '...' : item.contenu) || 'Contenu non disponible' }}
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="my-but">
+          {{ item.likeCount }} <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" class="my-but">
+          {{ item.viewCount }} <mat-icon>remove_red_eye</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" class="my-but" (click)="navigateToPost(item.id)">
+          Voir l'article
+        </button>
+        <button mat-raised-button color="accent" class="my-but" *ngIf="item.allowComments" (click)="navigateToComments(item.id)">
+          Voir les commentaires
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

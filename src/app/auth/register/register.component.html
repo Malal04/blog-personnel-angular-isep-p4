@@ -1,0 +1,71 @@
+<div class="containe">
+    <div class='formulaire'>
+      <div class='form'>
+        <div class='title'>
+          <h1>INSCRIPTION</h1>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class='input'>
+            <input
+              type="text"
+              formControlName="nomComplete"
+              placeholder='Nom Complet'
+            />
+            <div *ngIf="registerForm.get('nomComplete')?.invalid && (registerForm.get('nomComplete')?.touched || isSubmitted)" class="error">
+              Le nom complet est requis.
+            </div>
+          </div>
+          <div class='input'>
+            <input
+              type="text"
+              formControlName="userNom"
+              placeholder="'Nom d\'Utilisateur''"
+            />
+            <div *ngIf="registerForm.get('userNom')?.invalid && (registerForm.get('userNom')?.touched || isSubmitted)" class="error">
+              Le nom d'utilisateur est requis.
+            </div>
+          </div>
+          <div class='input'>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder='Email'
+            />
+            <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || isSubmitted)" class="error">
+              L'email est requis et doit être valide.
+            </div>
+          </div>
+          <div class='input'>
+            <input
+              type="password"
+              formControlName="password"
+              placeholder='Mot de Passe'
+            />
+            <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || isSubmitted)" class="error">
+              Le mot de passe est requis.
+            </div>
+          </div>
+          <div class='input'>
+            <input
+              type="password"
+              formControlName="configPassword"
+              placeholder='Confirmer le Mot de Passe'
+            />
+            <div *ngIf="registerForm.get('configPassword')?.invalid && (registerForm.get('configPassword')?.touched || isSubmitted)" class="error">
+              La confirmation du mot de passe est requise.
+            </div>
+          </div>
+          <button type="submit" class="button">
+            S'inscrire
+          </button>
+          <p>
+            <a routerLink="/">Déjà un compte ? Se connecter</a>
+          </p>
+        </form>
+        <div *ngIf="errors.length > 0" class="error-messages">
+          <p *ngFor="let error of errors" class="error-message">{{ error }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,47 @@
+<div class="containe">
+  <div class='formulaire'>
+    <div class='form'>
+      <div class='logo'>
+        <img src="../../../../public/logoblog.png" alt="Logo" />
+      </div>
+      <div class='title'>
+        <h1>CONNEXION</h1>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class='input'>
+          <input
+            type="text"
+            id="userNom"
+            formControlName="userNom"
+            placeholder='NOM UTILISATEUR'
+            [ngClass]="{ 'invalid': loginForm.get('userNom')?.invalid && (loginForm.get('userNom')?.touched || isSubmitted) }"
+          />
+          <div *ngIf="loginForm.get('userNom')?.invalid && (loginForm.get('userNom')?.touched || isSubmitted)" class="error">
+            L'utilisateur est requis.
+          </div>
+        </div>
+        <div class='input'>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder='PASSWORD'
+            [ngClass]="{ 'invalid': loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmitted) }"
+          />
+          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmitted)" class="error">
+            Le mot de passe est requis.
+          </div>
+        </div>
+        <button type="submit" class="button">
+          Se connecter
+        </button>
+        <p>
+          <a routerLink="/register">Créer un nouveau compte</a>
+        </p>
+      </form>
+      <div *ngIf="errors.length > 0" class="error-messages">
+        <p *ngFor="let error of errors" class="error-message">{{ error }}</p>
+      </div>
+    </div>
+  </div>
+</div>
