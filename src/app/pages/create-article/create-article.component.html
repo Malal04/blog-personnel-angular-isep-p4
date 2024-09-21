@@ -1,0 +1,36 @@
+<app-header></app-header>
+<mat-card class="center-card">
+
+  <form [formGroup]="articleForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input formControlName="titre" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Image</mat-label>
+      <input formControlName="img" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contenu</mat-label>
+      <textarea formControlName="contenu" rows="5" matInput>
+      </textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="estPublic">
+      Public
+    </mat-checkbox>
+
+    <mat-checkbox formControlName="allowComments">
+      Allow Comments
+    </mat-checkbox>
+
+    <button class="my-button" [disabled]="!articleForm.valid" (click)="createArticle()">
+      Create New Article
+    </button>
+
+  </form>
+
+</mat-card>

@@ -7,11 +7,10 @@
   <div class="card-container" *ngFor="let item of allArticles">
     <mat-card>
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image">
-        </div>
+        <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{ item.titre }}</mat-card-title>
         <mat-card-subtitle>
-          Posté par: {{ item.user.nomComplete }} | Posté le: {{ item.dateCreation}}
+          Posté par: {{ item.user.nomComplete }} | Posté le: {{ item.dateCreation }}
         </mat-card-subtitle>
       </mat-card-header>
 
@@ -22,17 +21,26 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <button mat-raised-button color="primary" class="my-but" >
+        <button mat-raised-button color="primary" class="my-but">
           {{ item.likeCount }} <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-raised-button color="primary" class="my-but" >
+        <button mat-raised-button color="primary" class="my-but">
           {{ item.viewCount }} <mat-icon>remove_red_eye</mat-icon>
         </button>
-        <button mat-raised-button color="primary" class="my-but" >
-          <mat-icon>commentaire</mat-icon>
+        <button mat-raised-button color="primary" class="my-but" (click)="toggleComments(item.id!)">
+          <mat-icon>comment</mat-icon>
         </button>
       </mat-card-actions>
 
+      <div *ngIf="showComments[item.id!]">
+        <h3>Commentaires</h3>
+        <div *ngFor="let commentaire of commentaires">
+          <p>{{ commentaire.contenu }}</p>
+          <button (click)="supprimerCommentaire(commentaire.id!)">Supprimer</button>
+        </div>
+        <textarea [(ngModel)]="nouveauCommentaire" placeholder="Ajouter un commentaire"></textarea>
+        <button (click)="ajouterCommentaire(articleId)">Ajouter</button>
+      </div>
     </mat-card>
   </div>
 </div>

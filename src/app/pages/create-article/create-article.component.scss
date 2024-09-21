@@ -119,3 +119,47 @@
     outline-offset: 2px;
     outline-style: dotted;
 }
+
+mat-card.center-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+mat-form-field mat-label {
+    font-weight: bold;
+}
+
+textarea {
+    resize: vertical;
+}
+
+mat-checkbox {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.my-button {
+    display: block;
+    width: 100%;
+    background-color: #0056b3;
+    margin-top: 20px;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}

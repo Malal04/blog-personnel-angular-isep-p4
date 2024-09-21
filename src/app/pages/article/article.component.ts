@@ -15,7 +15,9 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
+
 export class ArticleComponent implements OnInit {
+  allArticles: any; 
   articles: Article[] = [];
   articleForm!: FormGroup;
   userId: number | null = null;
@@ -46,8 +48,10 @@ export class ArticleComponent implements OnInit {
       this.articleService.getAllArticles().subscribe(
         (data: Article[]) => {
           this.articles = data;
+          console.log(this.articles);
         },
         (error) => {
+          console.error(error);
           this.errors.push('Erreur lors de la récupération des articles');
         }
       );
@@ -58,20 +62,22 @@ export class ArticleComponent implements OnInit {
     this.articleService.getAll().subscribe(
       (res)=> {
         console.log(res);
-        this.articleForm = res;
+        this.allArticles = res;
+        this.userId = this.authService.getUserId();
       },
       (error)=> {
-        console.error(error);
         console.error(error);
       }
     );
   }
 
-  navigateToPost(id: number): void {
-    this.router.navigate(['/view-post', id]);
-  }
+  
 
-  navigateToComments(id: number): void {
-    this.router.navigate(['/comments', id]);
-  }
+  // navigateToPost(id: number): void {
+  //   this.router.navigate(['/view-post', id]);
+  // }
+
+  // navigateToComments(id: number): void {
+  //   this.router.navigate(['/comments', id]);
+  // }
 }

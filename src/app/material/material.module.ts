@@ -68,7 +68,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatToolbarModule,
     MatTooltipModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule
   ],
 
   exports: [
@@ -111,7 +112,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }

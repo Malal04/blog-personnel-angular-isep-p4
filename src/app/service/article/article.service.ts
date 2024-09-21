@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Article } from './article.model';
+import { Amitie, Article, User } from './article.model';
 import { AuthService } from '../auth/auth.service';
 
 const BASIC_URL = 'http://localhost:8080';
@@ -9,11 +9,20 @@ const BASIC_URL = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ArticleService {
+
+  private createHeaders(): HttpHeaders {
+    const token = this.getAuthToken();
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getAllArticles(): Observable<Article[]> {
+  getAllArticles(): Observable<any> {
     
     var userId = this.authService.getUserId();
 
@@ -34,7 +43,7 @@ export class ArticleService {
       'Authorization': `Bearer  ${token}`
     });
 
-    return this.http.get<Article[]>(`${BASIC_URL}/api/v1/posts/all`, { params, headers }).pipe(
+    return this.http.get(`${BASIC_URL}/articles`, { headers: headers, params: params}).pipe(
       catchError(this.handleError)
     );
 
@@ -47,11 +56,6 @@ export class ArticleService {
     return null;
   }
 
-  private handleError(error: any): Observable<never> {
-    console.error('Une erreur est survenue :', error);
-    return throwError(() => new Error(error.message || 'Une erreur est survenue'));
-  }
-
   getAll(): Observable<any> {
     const token = this.getAuthToken();
 
@@ -61,6 +65,37 @@ export class ArticleService {
     });
 
     return this.http.get(`${BASIC_URL}/api/v1/posts`, { headers });
+  }
+
+  createArticle(articleDto: any, userId: number): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post(`${BASIC_URL}/api/v1/posts`, articleDto, {
+        headers,
+        params: { userId: userId.toString() }
+    }).pipe(catchError(this.handleError));
+  }
+
+  getArticleById(id: number, userId: number): Observable<Article> {
+    const headers = this.createHeaders();
+    return this.http.get<Article>(`${BASIC_URL}/${id}`, { headers, params: { userId: userId.toString() } })
+      .pipe(catchError(this.handleError));
+  }
+
+  updateArticle(id: number, articleDto: any): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.put(`${BASIC_URL}/update/${id}`, articleDto, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteArticle(id: number): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.delete(`${BASIC_URL}/delete/${id}`, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('Une erreur est survenue :', error);
+    return throwError(() => new Error(error.message || 'Une erreur est survenue'));
   }
 
 }

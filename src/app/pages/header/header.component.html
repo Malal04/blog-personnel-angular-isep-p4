@@ -1,17 +1,25 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class="my">My App</span>
-    <span class="example-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item color="primary" routerLink="/amitie"><mat-icon>home</mat-icon>Profile</button>
+    <button mat-menu-item color="primary"><mat-icon>settings</mat-icon>Settings</button>
+    <button mat-menu-item color="primary"><mat-icon>help</mat-icon>Help</button>
+  </mat-menu>
+
+  <span class="my" routerLink="/article">My App</span>
+  <span class="example-spacer"> 
+  </span>
+
+  <button mat-raised-button color="primary" routerLink="/create">Create New Post</button>
+  <button mat-raised-button color="primary" routerLink="/get">Search</button>
   
-    <button mat-raised-button color="primary" routerLink="/create-post">Create New Post</button>
-    <button mat-raised-button color="primary" routerLink="/view-all">View All Post</button>
-    <button mat-raised-button color="primary" routerLink="/search-by-name">Search</button>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+

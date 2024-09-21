@@ -1,8 +1,8 @@
 export interface Article {
-  id: number;
+  id?: number;
   user: User;
   titre: string;
-  img: string;
+  img?: string;
   contenu: string;
   estPublic: boolean;
   allowComments: boolean;
@@ -13,7 +13,7 @@ export interface Article {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   nomComplete: string;
   profile: string | null;
   userNom: string;
@@ -22,5 +22,27 @@ export interface User {
   articles: any[];
   commentaires: any[];
   amities: any[];
+}
+
+export interface Amitie {
+  id?: number;
+  user: User; 
+  ami: User; 
+  statut: Statut;
+  dateCreation: string; 
+}
+
+export enum Statut {
+  EN_ATTENTE = 'EN_ATTENTE',
+  ACCEPTEE = 'ACCEPTEE',
+  BLOQUEE = 'BLOQUEE'
+}
+
+export interface Commentaire {
+  id?: number;
+  user: User;
+  article: Article;
+  contenu: string;
+  dateCreation: string;
 }
   

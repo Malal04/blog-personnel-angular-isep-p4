@@ -8,13 +8,13 @@ const BASIC_URL = 'http://localhost:8080/api/v1/auth';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private userIdSubject = new BehaviorSubject<number | null>(null);
   userId$ = this.userIdSubject.asObservable();
 
   constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private http: HttpClient,@Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.loadUserId();
   }
@@ -52,8 +52,13 @@ export class AuthService {
   }
 
   getUserId(): number | null {
-    return this.userIdSubject.value;
+    const userId = localStorage.getItem('userId');
+    return userId ? +userId : null;
   }
+
+  // getUserId(): number | null {
+  //   return this.userIdSubject.value;
+  // }
 
   setUserId(id: number): void {
     if (this.isBrowser()) {
@@ -61,4 +66,5 @@ export class AuthService {
       this.userIdSubject.next(id);
     }
   }
+  
 }

@@ -1,0 +1,57 @@
+.container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+h1 {
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: #333; 
+}
+
+.card-container {
+    display: flex; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    margin-bottom: 20px; 
+}
+
+.liste-user {
+    background-color: #fff; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    width: 300px;
+    margin: 10px;
+}
+
+.example-header-image {
+    background-image: url('https://via.placeholder.com/150'); 
+    background-size: cover;
+    border-radius: 50%; 
+    height: 50px; 
+    width: 50px; 
+}
+
+mat-card-header {
+    display: flex; 
+    align-items: center; 
+}
+
+mat-card-subtitle {
+    font-weight: bold; 
+    margin-left: 10px; 
+}
+
+.mat-card-actions {
+    justify-content: center;
+}
+
+.my-but {
+    width: 100%;
+}
+
+mat-icon {
+    margin-right: 8px; 
+    vertical-align: middle;
+}

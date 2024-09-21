@@ -1,0 +1,97 @@
+.container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+h1, h2 {
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: #333; 
+}
+
+.card-container {
+    display: flex; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    margin-bottom: 20px; 
+}
+
+.liste-user {
+    background-color: #fff; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.example-header-image {
+    background-image: url('https://via.placeholder.com/150'); 
+    background-size: cover;
+    border-radius: 50%; 
+    height: 50px; 
+    width: 50px; 
+    margin-right: 10px; 
+}
+
+mat-card-header {
+    display: flex; 
+    align-items: center; 
+}
+
+mat-card-subtitle {
+    font-weight: bold; 
+    margin-left: 10px; 
+}
+
+.mat-card-actions {
+    justify-content: center;
+}
+
+.my-but {
+    width: 100%;
+}
+
+mat-icon {
+    margin-right: 8px; 
+    vertical-align: middle;
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    margin-left: 10px;
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 8px 12px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+mat-form-field {
+    width: 100%; 
+    margin-bottom: 20px; 
+}
+
+p {
+    color: red; 
+    text-align: center; 
+}

@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container">
+    <h2>Demandes d'Amitié</h2>
+    <ul>
+      <li *ngFor="let demande of demandes">
+        {{ demande.user.nomComplete }} - {{ demande.statut }}
+        <button *ngIf="demande.id !== undefined" (click)="accepterDemande(demande.id)">Accepter</button>
+        <button *ngIf="demande.id !== undefined" (click)="rejecterDemande(demande.id)">Rejeter</button>
+      </li>
+    </ul>
+  
+    <h2>Envoyer une Demande d'Amitié</h2>
+    <form [formGroup]="amieForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Ami</mat-label>
+        <mat-select formControlName="amiId">
+          <mat-option *ngFor="let ami of allAmie" [value]="ami.id">{{ ami.userNom }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit">Envoyer</button>
+    </form>
+  
+    <div *ngIf="errors.length">
+      <p *ngFor="let error of errors">{{ error }}</p>
+    </div>
+    
+</div>
+
+<app-user></app-user>
